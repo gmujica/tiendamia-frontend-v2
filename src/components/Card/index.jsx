@@ -8,10 +8,9 @@ import {
     Typography 
 } from "@mui/material";
 import React from "react";
-
-export const CardComponent = ({title, description, created_at, updated_at}) => {
+ const CardComponent = ({title, description, created_at, updated_at}) => {
     return (
-        <Card>
+        <Card sx={{ maxWidth: 345 }}>
             <CardMedia 
                 component="img"
                 height="194"
@@ -27,9 +26,11 @@ export const CardComponent = ({title, description, created_at, updated_at}) => {
             </CardContent>
             <CardActions>
                 <Button fullWidth variant="contained" size="small">
-                    Learn More
+                    More Details
                 </Button>
             </CardActions>
         </Card>
     )
 }
+
+export default CardComponent;
