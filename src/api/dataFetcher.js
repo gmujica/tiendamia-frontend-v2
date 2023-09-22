@@ -24,3 +24,14 @@ export const fetchItemsDetails = async (item_id) => {
     throw new Error("Error fetching event details");
   }
 };
+export const createItem = async (newDataItem) => {
+  try {
+    const response = await axios.post("http://localhost:3000/items/", newDataItem);
+    return response.data;
+  } catch (error) {
+    throw new Error("Error creating data");
+  }
+};
+
+//export default createItem;
+

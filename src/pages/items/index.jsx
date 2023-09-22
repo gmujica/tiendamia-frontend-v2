@@ -83,7 +83,7 @@ export const ItemsPage = () => {
         title="Items manager"
         description="NestJS + React App"
         element={
-          <Link to={'/create-item'} style={{ textDecoration: "none" }}>
+          <Link to={'/items/create-item'} style={{ textDecoration: "none" }}>
             <Button fullWidth variant="contained">
               Create New Item
             </Button>
