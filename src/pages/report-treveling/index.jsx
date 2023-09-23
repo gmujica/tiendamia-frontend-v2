@@ -44,7 +44,8 @@ export const ReportTravelingPage = () => {
     <Container sx={{ mt: 9 }} maxWidth="xl">
       <HeaderComponent
         title="Reports"
-        description="NestJS + React App"
+        description="Report with all orders in Traveling status between a range of
+        date given by parameter."
         element={
           <>
             <Button fullWidth variant="contained" onClick={handleGenerateReportClick}>

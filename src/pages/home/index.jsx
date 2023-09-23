@@ -23,8 +23,8 @@ export const HomePage = () => {
   return (
     <Container sx={{ mt: 9 }} maxWidth="xl">
       <HeaderComponent
-        title="Items manager"
-        description="NestJS + React App"
+        title="Orders manager"
+        description="On this page you can perform CRUD actions regarding orders"
         element={
           <Link to={'/orders/create-order'} style={{ textDecoration: "none" }}>
             <Button fullWidth variant="contained">

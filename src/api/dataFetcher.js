@@ -54,5 +54,3 @@ export async function fetchTravelingOrdersReport(startDate, endDate) {
   }
 }
 
-//export default createItem;
-

@@ -9,7 +9,6 @@ export const ItemsPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-
   useEffect(() => {
     const endpoint = '/items';
   
@@ -26,7 +25,7 @@ export const ItemsPage = () => {
     <Container sx={{ mt: 9 }} maxWidth="xl">
       <HeaderComponent
         title="Items manager"
-        description="NestJS + React App"
+        description="On this page you can perform CRUD actions regarding Items"
         element={
           <Link to={'/items/create-item'} style={{ textDecoration: "none" }}>
             <Button fullWidth variant="contained">

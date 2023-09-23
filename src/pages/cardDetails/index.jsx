@@ -50,5 +50,3 @@ export const CardDetailsPage = () => {
     </Container>
   );
 };
-
-//export default CardDetailsPage;

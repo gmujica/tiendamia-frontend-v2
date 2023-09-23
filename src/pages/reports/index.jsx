@@ -32,7 +32,8 @@ export const ReportsPage = () => {
     <Container sx={{ mt: 9 }} maxWidth="xl">
       <HeaderComponent
         title="Reports"
-        description="NestJS + React App"
+        description="This screen generates a report of orders in Availability status and
+        less than 2 days left to fail to comply with the delivery promise (ShippingPromise)"
         element={
           <Button fullWidth variant="contained" onClick={handleClick}>
             Generate report 1
