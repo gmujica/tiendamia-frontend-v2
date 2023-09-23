@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Container, Grid, Paper, Typography } from "@mui/material";
-import { fetchItemsDetails } from "../../api/dataFetcher";
+import { fetchOrderDetails } from "../../api/dataFetcher";
 
-export const CardDetailsPage = () => {
-  const { item_id } = useParams(); 
+export const OrderDetailsPage = () => {
+  const { order_id } = useParams(); 
   const [itemDetails, setItemDetails] = useState(null);
 
   useEffect(() => {
-    if (item_id) {
-      fetchItemsDetails(item_id)
+    if (order_id) {
+      fetchOrderDetails(order_id)
         .then((response) => {
           const data = {
             ...response.data,
@@ -17,40 +17,45 @@ export const CardDetailsPage = () => {
             updated_at: new Date(response.data.updated_at),
           };
           setItemDetails(data);
-          console.log(itemDetails);
+          console.log('data', data);
           
         })
         .catch((error) => {
           console.error("Error fetching event details:", error);
         });
     }
-  }, [item_id]);
+  }, [order_id]);
 
   return (
-    <Container sx={{ mt: 15 }} maxWidth="xl" >
+    <Container sx={{ mt: 15 }} maxWidth="xl">
+      <div>
       <Grid 
           container
           direction="column"
-          alignItems="center"
+          alignItems="center" 
+          justifyContent="top"
           sx={{ minHeight: "100vh" }}
       >
         <Grid item>
           {itemDetails ? ( 
           <Paper sx={{padding: "1.2em", borderRadius: "0.5em"}}>
-            <Typography variant="h4">Item Details</Typography>
-            <Typography variant="h6">Title: {itemDetails.title}</Typography>
-            <Typography>Description: {itemDetails.description}</Typography>
+            <Typography variant="h4">Order Details</Typography>
+            <Typography variant="h6">Order Id: {itemDetails.order_id}</Typography>
+            <Typography variant="h6">Client: {itemDetails.client}</Typography>
+            <Typography>Status: {itemDetails.status}</Typography>
+            <Typography>Items: items</Typography>
+            <Typography>shipping address: {itemDetails.shipping_address}</Typography>
+            <Typography>shipping promise: {itemDetails.shipping_promise}</Typography>
             <Typography>Created At: {itemDetails.created_at.toString()}</Typography>
             <Typography>Updated At: {itemDetails.updated_at.toString()}</Typography>
           </Paper>
           ) : (
-            <Typography variant="h6">Loading...</Typography>
+          <div>Loading...</div>
           )}
-            <Button fullWidth variant="outlined"  href="/items">Back</Button>
+            <Button fullWidth variant="outlined"  href="/">Back</Button>
         </Grid>     
       </Grid>
+      </div>
     </Container>
   );
 };
-
-//export default CardDetailsPage;

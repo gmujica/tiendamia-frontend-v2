@@ -24,6 +24,14 @@ export const fetchItemsDetails = async (item_id) => {
     throw new Error("Error fetching event details");
   }
 };
+export const fetchOrderDetails = async (order_id) => {
+  try {
+    const response = await axios.get(`http://localhost:3000/orders/${order_id}`);
+    return response;
+  } catch (error) {
+    throw new Error("Error fetching event details");
+  }
+};
 export const createItem = async (newDataItem) => {
   try {
     const response = await axios.post("http://localhost:3000/items/", newDataItem);

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
+import { Link } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -22,9 +23,12 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            Tiendamia Challenge
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Link to={'/'} style={{ textDecoration: "none" }}> <Button color="inherit">Orders</Button></Link>
+          <Link to={'/items'} style={{ textDecoration: "none" }}> <Button color="inherit">Items</Button></Link>
+          <Link to={'/reports'} style={{ textDecoration: "none" }}><Button color="inherit">Report 1</Button></Link>
+          <Link to={'/reports'} style={{ textDecoration: "none" }}><Button color="inherit">Report 2</Button></Link>
         </Toolbar>
       </AppBar>
     </Box>

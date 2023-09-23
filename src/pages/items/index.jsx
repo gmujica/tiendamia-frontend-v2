@@ -9,61 +9,6 @@ export const ItemsPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const dataT = [
-    {
-      "item_id": "079d8c23-335e-4571-b6c3-499dd9f4806c",
-      "title": "iphone 8",
-      "description": "iphone 8 white",
-      "price": "399.99",
-      "quantity": 100,
-      "created_at": "2023-09-20T16:55:11.885Z",
-      "updated_at": "2023-09-20T16:55:11.885Z"
-    },
-    {
-      "item_id": "079d8c23-335e-4571-b6c3-499dd9f4806c",
-      "title": "iphone 8",
-      "description": "iphone 8 white",
-      "price": "399.99",
-      "quantity": 100,
-      "created_at": "2023-09-20T16:55:11.885Z",
-      "updated_at": "2023-09-20T16:55:11.885Z"
-    },
-    {
-      "item_id": "079d8c23-335e-4571-b6c3-499dd9f4806c",
-      "title": "iphone 8",
-      "description": "iphone 8 white",
-      "price": "399.99",
-      "quantity": 100,
-      "created_at": "2023-09-20T16:55:11.885Z",
-      "updated_at": "2023-09-20T16:55:11.885Z"
-    },
-    {
-      "item_id": "079d8c23-335e-4571-b6c3-499dd9f4806c",
-      "title": "iphone 8",
-      "description": "iphone 8 white",
-      "price": "399.99",
-      "quantity": 100,
-      "created_at": "2023-09-20T16:55:11.885Z",
-      "updated_at": "2023-09-20T16:55:11.885Z"
-    },{
-      "item_id": "079d8c23-335e-4571-b6c3-499dd9f4806c",
-      "title": "iphone 8",
-      "description": "iphone 8 white",
-      "price": "399.99",
-      "quantity": 100,
-      "created_at": "2023-09-20T16:55:11.885Z",
-      "updated_at": "2023-09-20T16:55:11.885Z"
-    },
-    {
-      "item_id": "079d8c23-335e-4571-b6c3-499dd9f4806c",
-      "title": "iphone 8",
-      "description": "iphone 8 white",
-      "price": "399.99",
-      "quantity": 100,
-      "created_at": "2023-09-20T16:55:11.885Z",
-      "updated_at": "2023-09-20T16:55:11.885Z"
-    },
-  ];
 
   useEffect(() => {
     const endpoint = '/items';
@@ -91,16 +36,20 @@ export const ItemsPage = () => {
         }
       />
       <Box my={2}>
-        {data.map((item) => (
-          <Link to={`/items/${item.item_id}`} style={{ textDecoration: "none" }}>
-            <CardComponent 
-              title={item.title}
-              description={item.description}
-              created_at={item.created_at}
-              updated_at={item.updated_at}
-            />
-          </Link>
-        ))}
+        <Grid container spacing={2}>
+          {data.map((item) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={item.item_id}>
+              <Link to={`/items/${item.item_id}`} style={{ textDecoration: "none" }}>
+                <CardComponent 
+                  title={item.title}
+                  description={item.description}
+                  created_at={item.created_at}
+                  updated_at={item.updated_at}
+                />
+              </Link>
+            </Grid>
+          ))}
+        </Grid>
       </Box>
     </Container>
   );
