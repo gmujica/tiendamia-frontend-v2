@@ -17,7 +17,6 @@ export const OrderDetailsPage = () => {
             updated_at: new Date(response.data.updated_at),
           };
           setItemDetails(data);
-          console.log('data', data);
           
         })
         .catch((error) => {

@@ -17,8 +17,6 @@ export const CardDetailsPage = () => {
             updated_at: new Date(response.data.updated_at),
           };
           setItemDetails(data);
-          console.log(itemDetails);
-          
         })
         .catch((error) => {
           console.error("Error fetching event details:", error);

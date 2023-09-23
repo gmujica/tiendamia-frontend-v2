@@ -40,6 +40,19 @@ export const createItem = async (newDataItem) => {
     throw new Error("Error creating data");
   }
 };
+export async function fetchTravelingOrdersReport(startDate, endDate) {
+  try {
+    const response = await axios.get(`${BASE_URL}/reports/traveling`, {
+      params: {
+        start_date: startDate,
+        end_date: endDate,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error("Error fetching traveling orders report");
+  }
+}
 
 //export default createItem;
 

@@ -38,13 +38,10 @@ import {
             created_at: new Date(),
             updated_at: new Date(),
           });
-          
-          console.log(response);
           return response;
           
       } catch (error) {
         console.log(error);
-        //getError(error.message);
       }
     };
   

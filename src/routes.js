@@ -1,4 +1,3 @@
-// routes.js
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from './pages/home';
@@ -8,7 +7,8 @@ import { RouterLayout } from '../src/common/RouterLayout';
 import { CardDetailsPage } from "./pages/cardDetails";
 import { CreateItemPage } from './pages/createItem'
 import { CreateOrderPage } from './pages/createOrder';
-import { OrderDetailsPage } from './pages/orderDetails'
+import { OrderDetailsPage } from './pages/orderDetails';
+import { ReportTravelingPage } from './pages/report-treveling'
 
 export const AppRouter = () => {
   return (
@@ -21,6 +21,7 @@ export const AppRouter = () => {
         <Route path="/orders/:order_id" element={<OrderDetailsPage />} />
         <Route path="/items/create-item" element={<CreateItemPage />} />
         <Route path="/orders/create-order" element={<CreateOrderPage />} />
+        <Route path="/reports/traveling" element={<ReportTravelingPage />} />
       </Route>
     </Routes>
   );

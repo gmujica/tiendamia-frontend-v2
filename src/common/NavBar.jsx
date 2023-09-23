@@ -28,7 +28,7 @@ export default function NavBar() {
           <Link to={'/'} style={{ textDecoration: "none" }}> <Button color="inherit">Orders</Button></Link>
           <Link to={'/items'} style={{ textDecoration: "none" }}> <Button color="inherit">Items</Button></Link>
           <Link to={'/reports'} style={{ textDecoration: "none" }}><Button color="inherit">Report 1</Button></Link>
-          <Link to={'/reports'} style={{ textDecoration: "none" }}><Button color="inherit">Report 2</Button></Link>
+          <Link to={'/reports/traveling'} style={{ textDecoration: "none" }}><Button color="inherit">Report 2</Button></Link>
         </Toolbar>
       </AppBar>
     </Box>

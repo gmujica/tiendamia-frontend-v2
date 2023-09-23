@@ -14,7 +14,6 @@ export const HomePage = () => {
     fetchData(endpoint)
       .then((response) => {
         setData(response);
-        console.log('items', data);
       })
       .catch((error) => {
         console.error(error);
