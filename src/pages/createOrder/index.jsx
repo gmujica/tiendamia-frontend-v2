@@ -6,20 +6,49 @@ import {
     Box,
     Typography,
     TextField,
+    InputLabel,
+    Select,
+    MenuItem
   } from "@mui/material";
-  import { useState } from "react";
+  import React, { useEffect, useState } from 'react';
   import { createItem } from "../../api/dataFetcher";
+  import { fetchData } from '../../api/dataFetcher';
   import { v4 as uuidv4 } from "uuid";
   
   export const CreateOrderPage = () => {
     const [registerData, setregisterData] = useState({
-      title: "",
-      description: "",
-      item_id: "",
+      client: "",
+      status: "",
+      shipping_address: "",
+      shipping_promise: "",
+      order_id: "",
     });
+    const [ItemData, setItemData] = useState([]);
+    const [selectedItems, setSelectedItems] = useState([]);
+    
+    useEffect(() => {
+      const endpoint = '/items';
+    
+      fetchData(endpoint)
+        .then((response) => {
+          setItemData(response);
+          console.log(ItemData);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, []);
   
     const dataRegister = (e) => {
-      setregisterData({ ...registerData, [e.target.name]: e.target.value });
+      const { name, value } = e.target;
+  
+      if (name === "Items") {
+        const selectedItem = ItemData.find(item => item.title === value);
+        setSelectedItems(prevSelectedItems => [...prevSelectedItems, selectedItem]);
+        console.log('selectedItem', selectedItems);
+      } else {
+        setregisterData({ ...registerData, [name]: value });
+      }
     };
   
     const handleSubmit = async (e) => {
@@ -27,16 +56,17 @@ import {
       try {
         const newItemId = uuidv4();
   
-        const response = await createItem({
-            title: registerData.title,
-            description: registerData.description,
-            price: registerData.price,
-            quantity: registerData.quantity,
-            item_id_id: newItemId,
-            created_at: new Date(),
-            updated_at: new Date(),
-          });
-          return response;
+        const orderData = {
+          client: registerData.client,
+          status: registerData.status,
+          shipping_address: registerData.shipping_address,
+          shipping_promise: registerData.shipping_promise,
+          order_id: newItemId,
+          items: selectedItems.map((item) => item.item_id), // Assuming you want to send item IDs
+        };
+        const response = await createOrder(orderData);
+        console.log('Order created:', response);
+        return response;
           
       } catch (error) {
         console.log(error);
@@ -94,6 +124,21 @@ import {
                   sx={{ mt: 2, mb: 1.5 }}
                   onChange={dataRegister}
                 />
+                <InputLabel id="demo-simple-select-label">Select Item</InputLabel>
+                <Select
+                  fullWidth
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={''}
+                  label="Items"
+                  onChange={dataRegister}
+                >
+                  {ItemData.map((item) => (
+                    <MenuItem key={item.item_id} value={item}>
+                      {item.title}
+                    </MenuItem>
+                  ))}
+                </Select>
                 <Button
                   fullWidth
                   type="submit"

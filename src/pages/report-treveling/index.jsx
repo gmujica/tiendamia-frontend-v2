@@ -15,7 +15,7 @@ export const ReportTravelingPage = () => {
     setIsLoading(true);
 
 
-    const endpoint = '/reports/approve-orders-with-deadline'; 
+    const endpoint = '/reports/traveling'; 
     const params = {
       start_date: startDate,
       end_date: endDate,
