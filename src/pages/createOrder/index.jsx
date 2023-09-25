@@ -33,7 +33,6 @@ import {
       fetchData(endpoint)
         .then((response) => {
           setItemData(response);
-          console.log(itemData);
         })
         .catch((error) => {
           console.error(error);
@@ -65,7 +64,16 @@ import {
           itemIds: selectedItems
         };
         const response = await createOrder(orderData);
-        console.log('Order created:', response);
+        setRegisterData({
+          client: "",
+          status: "",
+          shipping_address: "",
+          shipping_promise: "",
+          order_id: "",
+          itemIds: [],
+        });
+        setSelectedItems([]);
+        return response;
       } catch (error) {
         console.log(error);
       }
@@ -94,6 +102,7 @@ import {
                   label="Client"
                   sx={{ mt: 2, mb: 1.5 }}
                   onChange={dataRegister}
+                  value={registerData.client}
                 />
                 <TextField
                   name="shipping_address"
@@ -103,6 +112,7 @@ import {
                   label="shipping address"
                   sx={{ mt: 2, mb: 1.5 }}
                   onChange={dataRegister}
+                  value={registerData.shipping_address}
                 />
                 <TextField
                   name="status"
@@ -112,6 +122,7 @@ import {
                   label="status"
                   sx={{ mt: 2, mb: 1.5 }}
                   onChange={dataRegister}
+                  value={registerData.status}
                 />
                 <TextField
                   name="shipping_promise"
@@ -121,6 +132,7 @@ import {
                   label="shipping promise"
                   sx={{ mt: 2, mb: 1.5 }}
                   onChange={dataRegister}
+                  value={registerData.shipping_promise}
                 />
                 <InputLabel id="demo-simple-select-label">Select Item</InputLabel>
                 <Select

@@ -36,8 +36,11 @@ import {
             created_at: new Date(),
             updated_at: new Date(),
           });
-          
-          console.log(response);
+          setregisterData({
+            title: "",
+            description: "",
+            item_id: "", 
+          });
           return response;
           
       } catch (error) {
@@ -68,6 +71,7 @@ import {
                   label="Title"
                   sx={{ mt: 2, mb: 1.5 }}
                   onChange={dataRegister}
+                  value={registerData.title}
                 />
                 <TextField
                   name="description"
@@ -77,6 +81,7 @@ import {
                   label="description"
                   sx={{ mt: 2, mb: 1.5 }}
                   onChange={dataRegister}
+                  value={registerData.description}
                 />
                 <TextField
                   name="price"
@@ -86,6 +91,7 @@ import {
                   label="price"
                   sx={{ mt: 2, mb: 1.5 }}
                   onChange={dataRegister}
+                  value={registerData.price}
                 />
                 <TextField
                   name="quantity"
@@ -95,6 +101,7 @@ import {
                   label="quantity"
                   sx={{ mt: 2, mb: 1.5 }}
                   onChange={dataRegister}
+                  value={registerData.quantity}
                 />
                 <Button
                   fullWidth

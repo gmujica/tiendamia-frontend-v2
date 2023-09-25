@@ -12,9 +12,14 @@ export const HomePage = () => {
     const endpoint = '/orders';
 
     fetchData(endpoint)
-      .then((response) => {
-        setData(response);
-      })
+    .then((response) => {
+      // Sort the data by the 'created_at' property in ascending order
+      const sortedData = [...response].sort((a, b) =>
+        new Date(b.created_at) - new Date(a.created_at)
+      );
+
+      setData(sortedData);
+    })
       .catch((error) => {
         console.error(error);
       });
