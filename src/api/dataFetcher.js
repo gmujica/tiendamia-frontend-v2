@@ -40,6 +40,15 @@ export const createItem = async (newDataItem) => {
     throw new Error("Error creating data");
   }
 };
+export const createOrder = async (orderData) => {
+  try {
+    const response = await axios.post("http://localhost:3000/orders/", orderData);
+    return response.data;
+  } catch (error) {
+    throw new Error("Error creating order");
+  }
+};
+
 export async function fetchTravelingOrdersReport(startDate, endDate) {
   try {
     const response = await axios.get(`${BASE_URL}/reports/traveling`, {

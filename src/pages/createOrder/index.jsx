@@ -11,19 +11,20 @@ import {
     MenuItem
   } from "@mui/material";
   import React, { useEffect, useState } from 'react';
-  import { createItem } from "../../api/dataFetcher";
+  import { createOrder } from "../../api/dataFetcher";
   import { fetchData } from '../../api/dataFetcher';
   import { v4 as uuidv4 } from "uuid";
   
   export const CreateOrderPage = () => {
-    const [registerData, setregisterData] = useState({
+    const [registerData, setRegisterData] = useState({
       client: "",
       status: "",
       shipping_address: "",
       shipping_promise: "",
       order_id: "",
+      itemIds: []
     });
-    const [ItemData, setItemData] = useState([]);
+    const [itemData, setItemData] = useState([]);
     const [selectedItems, setSelectedItems] = useState([]);
     
     useEffect(() => {
@@ -32,7 +33,7 @@ import {
       fetchData(endpoint)
         .then((response) => {
           setItemData(response);
-          console.log(ItemData);
+          console.log(itemData);
         })
         .catch((error) => {
           console.error(error);
@@ -43,11 +44,10 @@ import {
       const { name, value } = e.target;
   
       if (name === "Items") {
-        const selectedItem = ItemData.find(item => item.title === value);
-        setSelectedItems(prevSelectedItems => [...prevSelectedItems, selectedItem]);
-        console.log('selectedItem', selectedItems);
+        const selectedItem = itemData.find((item) => item.title === value);
+        setSelectedItems((prevSelectedItems) => [...prevSelectedItems, selectedItem.item_id]);
       } else {
-        setregisterData({ ...registerData, [name]: value });
+        setRegisterData({ ...registerData, [name]: value });
       }
     };
   
@@ -62,12 +62,10 @@ import {
           shipping_address: registerData.shipping_address,
           shipping_promise: registerData.shipping_promise,
           order_id: newItemId,
-          items: selectedItems.map((item) => item.item_id), // Assuming you want to send item IDs
+          itemIds: selectedItems
         };
         const response = await createOrder(orderData);
         console.log('Order created:', response);
-        return response;
-          
       } catch (error) {
         console.log(error);
       }
@@ -116,11 +114,11 @@ import {
                   onChange={dataRegister}
                 />
                 <TextField
-                  name="shipping_promis"
+                  name="shipping_promise"
                   margin="normal"
                   type="text"
                   fullWidth
-                  label="shipping_promis"
+                  label="shipping promise"
                   sx={{ mt: 2, mb: 1.5 }}
                   onChange={dataRegister}
                 />
@@ -131,10 +129,11 @@ import {
                   id="demo-simple-select"
                   value={''}
                   label="Items"
+                  name="Items"
                   onChange={dataRegister}
                 >
-                  {ItemData.map((item) => (
-                    <MenuItem key={item.item_id} value={item}>
+                  {itemData.map((item) => (
+                    <MenuItem key={item.item_id} value={item.title}>
                       {item.title}
                     </MenuItem>
                   ))}
