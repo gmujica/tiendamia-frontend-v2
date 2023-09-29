@@ -8,7 +8,10 @@ import {
     Typography 
 } from "@mui/material";
 import React from "react";
+import { formatDate } from '../../utils';
+
 const CardOrderComponent = ({client, status, shipping_promise, shipping_address}) => {
+    const formattedShippingPromise = formatDate(shipping_promise);
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardMedia 
@@ -21,7 +24,7 @@ const CardOrderComponent = ({client, status, shipping_promise, shipping_address}
                 <Typography sx={{mb: 1.5}} variant="h4">Client: {client}</Typography>
                 <Divider />
                 <Typography sx={{mt: 1.5}}>Status: {status}</Typography>
-                <Typography sx={{mt: 1.5}}>shipping promise: {shipping_promise}</Typography>
+                <Typography sx={{mt: 1.5}}>shipping promise: {formattedShippingPromise}</Typography>
                 <Typography sx={{mt: 1.5}}>shipping address: {shipping_address}</Typography>
             </CardContent>
             <CardActions>
