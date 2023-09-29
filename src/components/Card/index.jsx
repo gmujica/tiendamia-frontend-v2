@@ -8,7 +8,11 @@ import {
     Typography 
 } from "@mui/material";
 import React from "react";
+import { formatDate } from '../../utils';
+
  const CardComponent = ({title, description, created_at, updated_at}) => {
+    const formattCreatedDate = formatDate(created_at);
+    const formatedUpdateDate = formatDate(updated_at);
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardMedia 
@@ -21,8 +25,8 @@ import React from "react";
                 <Typography sx={{mb: 1.5}} variant="h4">Title: {title}</Typography>
                 <Divider />
                 <Typography sx={{mt: 1.5}}>Description: {description}</Typography>
-                <Typography sx={{mt: 1.5}}>created: {created_at}</Typography>
-                <Typography sx={{mt: 1.5}}>updated: {updated_at}</Typography>
+                <Typography sx={{mt: 1.5}}>created: {formattCreatedDate}</Typography>
+                <Typography sx={{mt: 1.5}}>updated: {formatedUpdateDate}</Typography>
             </CardContent>
             <CardActions>
                 <Button fullWidth variant="contained" size="small">
