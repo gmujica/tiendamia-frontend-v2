@@ -53,29 +53,35 @@ export const ReportTravelingPage = () => {
         description="Report with all orders in Traveling status between a range of
         date given by parameter."
         element={
-          <>
-            <TextField
-              label="Start Date"
-              type="date"
-              value={startDate}
-              onChange={(e) => {
-                setStartDate(e.target.value);
-              }}
-              sx={{ mt: 2 }}
-            />
-            <TextField
-              label="End Date"
-              type="date"
-              value={endDate}
-              onChange={(e) => {
-                setEndDate(e.target.value);
-              }}
-              sx={{ mt: 1 }}
-            />
-            <Button fullWidth variant="contained" onClick={fetchTravelingOrdersReport}>
-              Generate Traveling Orders Report
-            </Button>
-          </>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <TextField
+                label="Start Date"
+                type="date"
+                value={startDate}
+                onChange={(e) => {
+                  setStartDate(e.target.value);
+                }}
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={6} lg={6}>
+              <TextField
+                label="End Date"
+                type="date"
+                value={endDate}
+                onChange={(e) => {
+                  setEndDate(e.target.value);
+                }}
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Button fullWidth variant="contained" onClick={fetchTravelingOrdersReport}>
+                Generate Traveling Orders Report
+              </Button>
+            </Grid>
+          </Grid>
         }
       />
       <Box my={2}>

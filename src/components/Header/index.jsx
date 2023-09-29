@@ -8,10 +8,10 @@ const HeaderComponent = ({ title, description, element }) => {
             <Box sx={{ width: "100%", height: "350px" }}>
                 <Grid
                     container
-                    direction="row"
                     justifyContent="center"
                     alignItems="center"
-                    sx={{ height: "100%" }}
+                    height="100%"
+                    spacing={2} 
                 >
                     <Grid item xs={5}>
                         <Grid
@@ -28,10 +28,10 @@ const HeaderComponent = ({ title, description, element }) => {
                                 <Typography>{description}</Typography>
                             </Grid>
                             {element !== undefined && (
-                                <Grid sx={{ mt: 2 }} item>
-                                    {element}
-                                </Grid>
-                            )}
+                            <Grid item sx={{ mt: 2 }}>
+                                {element}
+                            </Grid>
+                        )}
                         </Grid>
                     </Grid>
                 </Grid>
